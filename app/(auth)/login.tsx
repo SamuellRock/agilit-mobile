@@ -1,38 +1,91 @@
 // app/(auth)/login.tsx
 import React, { useState } from "react";
-import { View, Text, TextInput, Pressable, Alert } from "react-native";
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import { useRouter } from "expo-router";
 import { useAuth } from "@/context/AuthContext";
 import UiButton from "@/components/UiButton";
+import InputField from "@/components/InputField";
 
 export default function Login() {
   const router = useRouter();
   const { login } = useAuth();
   const [email, setEmail] = useState("");
-  const [password] = useState("ignored"); // in demo we don't use
+  const [password, setPassword] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   const doLogin = async () => {
     try {
-      await login(email, password);
-      // get user from storage or context
-      router.replace("/"); // root will resolve to user's area via conditional check in index
+      setSubmitting(true);
+      await login(email.trim(), password);
+      router.replace("/");
     } catch (e: any) {
       Alert.alert("Erro", e.message || "Falha ao logar");
+    } finally {
+      setSubmitting(false);
     }
   };
 
   return (
-    <View className="flex-1 items-center justify-center px-6 bg-gray-50">
-      <Text className="text-2xl font-bold mb-6">Bem-vindo ao Agilit Loan</Text>
+    <SafeAreaView className="flex-1 bg-dark-500">
+      <KeyboardAvoidingView
+        behavior={Platform.select({ ios: "padding", android: undefined })}
+        className="flex-1"
+      >
+        <ScrollView
+          contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 24, paddingBottom: 40 }}
+          keyboardShouldPersistTaps="handled"
+        >
+          <View className="mt-14 space-y-2">
+            <Text className="text-sm font-semibold uppercase tracking-wide text-primary">
+              Agilit Loan
+            </Text>
+            <Text className="text-3xl font-bold text-white">Entrar</Text>
+            <Text className="text-base text-gray-300">
+              Simplifique o dia do Samuel com indicadores claros e ofertas atualizadas.
+            </Text>
+          </View>
 
-      <TextInput placeholder="Email" value={email} onChangeText={setEmail}
-        className="w-full border border-gray-300 rounded-md px-3 py-2 mb-3" />
+          <View className="mt-10 space-y-6">
+            <InputField
+              label="Email"
+              autoCapitalize="none"
+              keyboardType="email-address"
+              value={email}
+              onChangeText={setEmail}
+              placeholder="samuel@agilit.com"
+              helperText="Utilize o mesmo email registrado no onboarding."
+            />
 
-      <UiButton onPress={doLogin}>Entrar</UiButton>
+            <InputField
+              label="Senha"
+              secureTextEntry
+              value={password}
+              onChangeText={setPassword}
+              placeholder="••••••••"
+            />
 
-      <Pressable onPress={() => router.push("/(auth)/signup")} className="mt-4">
-        <Text className="text-blue-600">Criar conta</Text>
-      </Pressable>
-    </View>
+            <UiButton onPress={doLogin} loading={submitting}>
+              Entrar
+            </UiButton>
+
+            <UiButton
+              variant="ghost"
+              onPress={() => router.push("/(auth)/signup")}
+              className="border-white/10"
+            >
+              Criar conta
+            </UiButton>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }

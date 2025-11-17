@@ -1,6 +1,6 @@
 // app/index.tsx
 import React, { useEffect } from "react";
-import { View, ActivityIndicator } from "react-native";
+import { ActivityIndicator, SafeAreaView, Text, View } from "react-native";
 import { useRouter } from "expo-router";
 import { useAuth } from "@/context/AuthContext";
 
@@ -16,8 +16,11 @@ export default function Root() {
   }, [loading, user]);
 
   return (
-    <View className="flex-1 items-center justify-center">
-      <ActivityIndicator />
-    </View>
+    <SafeAreaView className="flex-1 items-center justify-center bg-dark-500">
+      <View className="items-center gap-3">
+        <ActivityIndicator color="#9BFF2A" />
+        <Text className="text-sm text-gray-300">Sincronizando dados do Samuel…</Text>
+      </View>
+    </SafeAreaView>
   );
 }

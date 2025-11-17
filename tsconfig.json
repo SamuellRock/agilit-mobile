@@ -12,7 +12,7 @@
       "@/hooks/*": ["src/hooks/*"],
       "@/assets/*": ["assets/*"]
     },
-    "types": ["expo", "expo-router"]
+    "types": ["expo", "expo-router", "nativewind/types"]
   },
   "include": [
     "app/**/*.ts",
@@ -22,7 +22,8 @@
     "assets/**/*.ts",
     "assets/**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
+    "expo-env.d.ts",
+    "nativewind-env.d.ts"
   ],
   "exclude": ["node_modules"]
 }

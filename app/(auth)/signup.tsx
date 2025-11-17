@@ -1,9 +1,19 @@
 // app/(auth)/signup.tsx
 import React, { useState } from "react";
-import { View, Text, TextInput, Alert, Pressable } from "react-native";
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import { useRouter } from "expo-router";
 import { useAuth } from "@/context/AuthContext";
 import UiButton from "@/components/UiButton";
+import InputField from "@/components/InputField";
 
 export default function Signup() {
   const { signup } = useAuth();
@@ -11,38 +21,88 @@ export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<"credor" | "devedor">("devedor");
+  const [submitting, setSubmitting] = useState(false);
 
   const doSignup = async () => {
     try {
-      await signup(name, email, "ignored", role);
-      // redirect to role home
+      setSubmitting(true);
+      await signup(name.trim(), email.trim(), "ignored", role);
       router.replace(role === "credor" ? "/credor" : "/devedor");
     } catch (e: any) {
       Alert.alert("Erro", e.message || "Falha no cadastro");
+    } finally {
+      setSubmitting(false);
     }
   };
 
   return (
-    <View className="flex-1 items-center justify-center px-6 bg-gray-50">
-      <Text className="text-2xl font-bold mb-6">Criar Conta</Text>
+    <SafeAreaView className="flex-1 bg-dark-500">
+      <KeyboardAvoidingView
+        behavior={Platform.select({ ios: "padding", android: undefined })}
+        className="flex-1"
+      >
+        <ScrollView
+          contentContainerStyle={{ flexGrow: 1, paddingHorizontal: 24, paddingBottom: 40 }}
+          keyboardShouldPersistTaps="handled"
+        >
+          <View className="mt-12 space-y-2">
+            <Text className="text-sm font-semibold uppercase tracking-wide text-primary">
+              Boas-vindas
+            </Text>
+            <Text className="text-3xl font-bold text-white">Criar conta</Text>
+            <Text className="text-base text-gray-300">
+              Conectamos o Samuel às propostas certas em poucos cliques.
+            </Text>
+          </View>
 
-      <TextInput placeholder="Nome" value={name} onChangeText={setName}
-        className="w-full border border-gray-300 rounded-md px-3 py-2 mb-3" />
-      <TextInput placeholder="Email" value={email} onChangeText={setEmail}
-        className="w-full border border-gray-300 rounded-md px-3 py-2 mb-3" />
+          <View className="mt-10 space-y-6">
+            <InputField label="Nome" value={name} onChangeText={setName} placeholder="Samuel Lima" />
+            <InputField
+              label="Email corporativo"
+              value={email}
+              onChangeText={setEmail}
+              autoCapitalize="none"
+              keyboardType="email-address"
+              placeholder="samuel@agilit.com"
+            />
 
-      <View className="flex-row space-x-3 mb-4">
-        <Pressable onPress={() => setRole("credor")}
-          className={`px-3 py-2 rounded ${role === "credor" ? "bg-blue-600" : "bg-gray-200"}`}>
-          <Text className={`${role === "credor" ? "text-white" : "text-black"}`}>Interesse em ofertar empréstimos</Text>
-        </Pressable>
-        <Pressable onPress={() => setRole("devedor")}
-          className={`px-3 py-2 rounded ${role === "devedor" ? "bg-blue-600" : "bg-gray-200"}`}>
-          <Text className={`${role === "devedor" ? "text-white" : "text-black"}`}>Interesse em pegar empréstimos</Text>
-        </Pressable>
-      </View>
+            <View>
+              <Text className="mb-3 text-sm font-semibold uppercase text-gray-400">Perfil</Text>
+              <View className="flex-row gap-3">
+                {(["credor", "devedor"] as const).map((item) => {
+                  const isActive = role === item;
+                  return (
+                    <Pressable
+                      key={item}
+                      onPress={() => setRole(item)}
+                      className={`flex-1 rounded-2xl border px-4 py-3 ${
+                        isActive ? "border-primary bg-primary/10" : "border-white/10 bg-white/5"
+                      }`}
+                    >
+                      <Text className="text-sm font-semibold text-white">
+                        {item === "credor" ? "Quero ofertar" : "Quero contratar"}
+                      </Text>
+                      <Text className="text-xs text-gray-300">
+                        {item === "credor"
+                          ? "Monitore ofertas e contratos em tempo real."
+                          : "Receba recomendações alinhadas ao seu fluxo."}
+                      </Text>
+                    </Pressable>
+                  );
+                })}
+              </View>
+            </View>
 
-      <UiButton onPress={doSignup}>Criar conta</UiButton>
-    </View>
+            <UiButton onPress={doSignup} loading={submitting}>
+              Criar conta
+            </UiButton>
+
+            <UiButton variant="ghost" onPress={() => router.push("/(auth)/login")}>
+              Voltar para login
+            </UiButton>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
