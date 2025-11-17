@@ -12,7 +12,7 @@ const tabOptions = {
     borderTopWidth: 0,
     paddingTop: 10,
     paddingBottom: 20,
-    height: 70,
+    height: 90,
     position: "absolute",
   },
   tabBarLabelStyle: { fontSize: 12, fontWeight: "600" },
