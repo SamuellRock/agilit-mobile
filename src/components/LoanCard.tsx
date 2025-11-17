@@ -52,11 +52,11 @@ export default function LoanCard({ loan, role = "credor", onPress }: Props) {
         <View className="items-end">
           <Text className="text-xs text-gray-400">Vencimento</Text>
           <Text className="text-base font-semibold text-gray-900">{formatDate(loan.dueDate)}</Text>
-          <Text className="text-xs text-gray-500 mt-1">{formatPercentage(loan.rate)}</Text>
+          <Text className="text-xs text-gray-800 mt-2">{formatPercentage(loan.rate)}</Text>
         </View>
       </View>
 
-      <Text className="mt-3 text-sm text-gray-600">{loan.notes}</Text>
+      {/* <Text className="mt-3 text-sm text-gray-600">{loan.notes}</Text> */}
     </Pressable>
   );
 }

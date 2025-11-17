@@ -11,8 +11,9 @@ const tabOptions = {
     backgroundColor: "#101010",
     borderTopWidth: 0,
     paddingTop: 10,
-    paddingBottom: 14,
+    paddingBottom: 20,
     height: 70,
+    position: "absolute",
   },
   tabBarLabelStyle: { fontSize: 12, fontWeight: "600" },
 };

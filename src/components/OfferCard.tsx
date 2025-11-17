@@ -23,17 +23,17 @@ export default function OfferCard({ offer, onPress, actionLabel, highlight }: Pr
 
       {highlight ? <Text className="text-xs uppercase tracking-wide text-primary">{highlight}</Text> : null}
       <Text className="text-base text-white">{offer.profile}</Text>
-      <Text className="mt-1 text-sm text-gray-300">{offer.description}</Text>
+      {/* <Text className="mt-1 text-sm text-gray-300">{offer.description}</Text> */}
 
       <View className="mt-3 flex-row flex-wrap gap-2">
         <View className="rounded-full bg-dark-200 px-3 py-1">
           <Text className="text-xs text-gray-200">Início {formatDate(offer.startDate)}</Text>
         </View>
-        {offer.tags?.map((tag) => (
+        {/* {offer.tags?.map((tag) => (
           <View key={tag} className="rounded-full border border-white/10 px-3 py-1">
             <Text className="text-xs text-gray-100">{tag}</Text>
           </View>
-        ))}
+        ))} */}
       </View>
 
       {actionLabel ? (

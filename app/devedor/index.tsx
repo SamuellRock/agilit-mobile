@@ -19,10 +19,10 @@ export default function DevedorHome() {
             {nextPayment ? formatCurrency(nextPayment.amount / 2) : "-"}
           </Text>
           <Text className="mt-1 text-sm text-gray-300">
-            Ajuste automático para garantir folga no caixa do Samuel.
+            Emprestimo pego com LUCIO CABRAL
           </Text>
           <UiButton className="mt-5" variant="secondary">
-            Negociar parcela
+            Registrar Pagamento
           </UiButton>
         </View>
 
@@ -34,7 +34,7 @@ export default function DevedorHome() {
         </View>
 
         <View className="mt-8 mb-10 rounded-3xl border border-white/10 p-5">
-          <Text className="text-lg font-semibold text-white">Checklist</Text>
+          {/* <Text className="text-lg font-semibold text-white">Checklist</Text>
           <Text className="mt-1 text-sm text-gray-300">
             Antecipe documentos e habilite ofertas com taxas menores.
           </Text>
@@ -42,18 +42,19 @@ export default function DevedorHome() {
             <ChecklistItem label="Extrato atualizado enviado" done />
             <ChecklistItem label="Proposta de renegociação" />
             <ChecklistItem label="Garantia adicional cadastrada" />
-          </View>
+          </View> */}
         </View>
+        
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-function ChecklistItem({ label, done = false }: { label: string; done?: boolean }) {
-  return (
-    <View className="mb-3 flex-row items-center rounded-2xl border border-white/10 p-3">
-      <View className={`mr-3 h-5 w-5 rounded-full ${done ? "bg-primary" : "border border-white/20"}`} />
-      <Text className={`text-sm ${done ? "text-white" : "text-gray-400"}`}>{label}</Text>
-    </View>
-  );
-}
+// function ChecklistItem({ label, done = false }: { label: string; done?: boolean }) {
+//   return (
+//     <View className="mb-3 flex-row items-center rounded-2xl border border-white/10 p-3">
+//       <View className={`mr-3 h-5 w-5 rounded-full ${done ? "bg-primary" : "border border-white/20"}`} />
+//       <Text className={`text-sm ${done ? "text-white" : "text-gray-400"}`}>{label}</Text>
+//     </View>
+//   );
+// }

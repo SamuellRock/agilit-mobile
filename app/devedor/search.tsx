@@ -16,10 +16,10 @@ export default function Search() {
         <Text className="text-sm uppercase tracking-wide text-primary">Explorar</Text>
         <Text className="text-3xl font-bold text-white">Buscar ofertas</Text>
         <Text className="mt-2 text-base text-gray-300">
-          Filtramos condições alinhadas ao fluxo do Samuel.
+          Escolha a melhor oferta de emprestimo para você.
         </Text>
 
-        <Text className="mt-6 text-sm uppercase text-gray-400">Recomendadas para você</Text>
+        <Text className="mt-12 text-sm uppercase text-gray-400">Recomendadas para você</Text>
         {availableOffers.map((offer) => (
           <OfferCard
             key={offer.id}
