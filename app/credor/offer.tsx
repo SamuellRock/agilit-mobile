@@ -34,7 +34,7 @@ export default function OfferScreen() {
 
           <UiButton
             className="mt-5"
-            onPress={() => router.push("/credor/create-offer")}
+            onPress={() => router.push("/(stack)/create-offer")}
           >
             + Criar nova oferta
           </UiButton>
@@ -46,7 +46,7 @@ export default function OfferScreen() {
               key={offer.id}
               offer={offer}
               actionLabel="Ver detalhes"
-              onPress={() => router.push(`/credor/offer/${offer.id}`)}
+              onPress={() => router.push(`/(stack)/offer/${offer.id}`)}
             />
           ))}
         </View>

@@ -73,7 +73,7 @@ export default function CredorHome() {
             <LoanCard
               key={loan.id}
               loan={loan}
-              onPress={() => router.push(`/credor/offer/${loan.id}`)}
+              onPress={() => router.push(`/(stack)/offer/${loan.id}`)}
             />
           ))}
         </View>
@@ -105,7 +105,7 @@ export default function CredorHome() {
               key={offer.id}
               offer={offer}
               highlight="em negociação"
-              onPress={() => router.push(`/credor/offer/${offer.id}`)}
+              onPress={() => router.push(`/(stack)/offer/${offer.id}`)}
             />
           ))}
         </View>

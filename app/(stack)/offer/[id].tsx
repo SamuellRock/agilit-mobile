@@ -53,7 +53,7 @@ export default function OfferDetails() {
               <Text className="text-sm text-gray-300">{offer.description}</Text>
               <UiButton
                 onPress={() =>
-                  router.push(`/credor/start-loan?offer=${offer.id}`)
+                  router.push(`/(stack)/start-loan?offer=${offer.id}`)
                 }
               >
                 Criar empréstimo
