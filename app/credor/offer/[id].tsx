@@ -1,5 +1,6 @@
 import React from "react";
-import { SafeAreaView, ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import UiButton from "@/components/UiButton";
 import { availableOffers, credorActiveLoans } from "@/data/mockData";

@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
-import { Alert, SafeAreaView, ScrollView, Text, View } from "react-native";
+import { Alert, ScrollView, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import InputField from "@/components/InputField";
 import UiButton from "@/components/UiButton";

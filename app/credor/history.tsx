@@ -1,6 +1,7 @@
 // app/credor/history.tsx
 import React from "react";
-import { SafeAreaView, ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import LoanCard from "@/components/LoanCard";
 import OfferCard from "@/components/OfferCard";
 import { availableOffers, credorHistoricLoans } from "@/data/mockData";

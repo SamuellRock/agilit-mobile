@@ -15,10 +15,6 @@ module.exports = function (api) {
 
   return {
     presets: ["babel-preset-expo"],
-    plugins: [
-      "expo-router/babel",
-      ...sanitizedPlugins,
-      "react-native-reanimated/plugin", // <-- DEVE SER O ÚLTIMO
-    ],
+    plugins: [...sanitizedPlugins, "react-native-reanimated/plugin"], // <-- DEVE SER O ÚLTIMO
   };
 };

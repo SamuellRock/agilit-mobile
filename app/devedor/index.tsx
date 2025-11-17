@@ -1,6 +1,7 @@
 // app/devedor/index.tsx
 import React from "react";
-import { SafeAreaView, ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import LoanCard from "@/components/LoanCard";
 import { devedorActiveLoans } from "@/data/mockData";
 import UiButton from "@/components/UiButton";

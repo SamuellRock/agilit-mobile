@@ -1,6 +1,7 @@
 // app/devedor/settings.tsx
 import React from "react";
-import { SafeAreaView, ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useAuth } from "@/context/AuthContext";
 import UiButton from "@/components/UiButton";
 
