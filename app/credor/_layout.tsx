@@ -1,9 +1,6 @@
 // app/credor/_layout.tsx
 import { Feather } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-import "../(stack)/create-offer";
-import "../(stack)/offer/[id]";
-import "../(stack)/start-loan";
 import "../../global.css";
 
 const tabBarOptions = {
