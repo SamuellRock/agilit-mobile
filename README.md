@@ -2,6 +2,10 @@
 
 Aplicativo Expo voltado para simular o acompanhamento de propostas e empréstimos do Samuel dentro do ecossistema Agilit. O projeto usa **Expo SDK 54 (~54.0.6)** com React Native 0.81, Expo Router e NativeWind.
 
+## DEVs:
+<a href="https://github.com/SamuellRock">Samuel Rock</a>
+<a href="https://github.com/bercezar">Bernardo Cezar</a>
+
 ## Stack principal
 - Expo + React Native (SDK 54 / `expo@~54.0.6`)
 - Expo Router para navegação multi-stack
