@@ -20,6 +20,7 @@ export default function Signup() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
   const [role, setRole] = useState<"credor" | "devedor">("devedor");
   const [submitting, setSubmitting] = useState(false);
 
@@ -51,19 +52,31 @@ export default function Signup() {
             </Text>
             <Text className="text-3xl font-bold text-white">Criar conta</Text>
             <Text className="text-base text-gray-300">
-              Conectamos o Samuel às propostas certas em poucos cliques.
+              Conectamos às propostas certas em poucos cliques.
             </Text>
           </View>
 
           <View className="mt-10 space-y-6">
-            <InputField label="Nome" value={name} onChangeText={setName} placeholder="Samuel Lima" />
+            <InputField 
+              label="Nome" 
+              value={name} 
+              onChangeText={setName} 
+              placeholder="Nome Completo" 
+            />
             <InputField
-              label="Email corporativo"
+              label="Email"
               value={email}
               onChangeText={setEmail}
               autoCapitalize="none"
               keyboardType="email-address"
-              placeholder="samuel@agilit.com"
+              placeholder="user@agilit.com"
+            />
+            <InputField
+              label="Senha"
+              secureTextEntry
+              value={pass}
+              onChangeText={setPass}
+              placeholder="••••••••"
             />
 
             <View>
@@ -80,12 +93,12 @@ export default function Signup() {
                       }`}
                     >
                       <Text className="text-sm font-semibold text-white">
-                        {item === "credor" ? "Quero ofertar" : "Quero contratar"}
+                        {item === "credor" ? "Quero ofertar Emprestimo" : "Quero Buscar Ofertas"}
                       </Text>
                       <Text className="text-xs text-gray-300">
                         {item === "credor"
-                          ? "Monitore ofertas e contratos em tempo real."
-                          : "Receba recomendações alinhadas ao seu fluxo."}
+                          ? "Controle seus emprestimos e alcance mais pessoas."
+                          : "Encontre as melhores ofertas de emprestimo."}
                       </Text>
                     </Pressable>
                   );
@@ -93,13 +106,17 @@ export default function Signup() {
               </View>
             </View>
 
-            <UiButton onPress={doSignup} loading={submitting}>
-              Criar conta
-            </UiButton>
 
-            <UiButton variant="ghost" onPress={() => router.push("/(auth)/login")}>
-              Voltar para login
-            </UiButton>
+            <View className="mt-10 space-y-8">
+              <UiButton onPress={doSignup} loading={submitting} className="mb-4">
+                Criar conta
+              </UiButton>
+
+              <UiButton variant="ghost" onPress={() => router.push("/(auth)/login")}>
+                Voltar para login
+              </UiButton>
+            </View>
+
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

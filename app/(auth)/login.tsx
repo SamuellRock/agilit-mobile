@@ -49,19 +49,18 @@ export default function Login() {
             </Text>
             <Text className="text-3xl font-bold text-white">Entrar</Text>
             <Text className="text-base text-gray-300">
-              Simplifique o dia do Samuel com indicadores claros e ofertas atualizadas.
+              Simplifique sua carteira de emprestimos.
             </Text>
           </View>
 
-          <View className="mt-10 space-y-6">
+          <View className="mt-10 space-y-8">
             <InputField
               label="Email"
               autoCapitalize="none"
               keyboardType="email-address"
               value={email}
               onChangeText={setEmail}
-              placeholder="samuel@agilit.com"
-              helperText="Utilize o mesmo email registrado no onboarding."
+              placeholder="user@agilit.com"
             />
 
             <InputField
@@ -71,18 +70,21 @@ export default function Login() {
               onChangeText={setPassword}
               placeholder="••••••••"
             />
+        
+            <View className="mt-10 space-y-8">
+              <UiButton onPress={doLogin} loading={submitting} className="mb-4">
+                Entrar
+              </UiButton>
 
-            <UiButton onPress={doLogin} loading={submitting}>
-              Entrar
-            </UiButton>
+              <UiButton
+                variant="ghost"
+                onPress={() => router.push("/(auth)/signup")}
+                className="border-white/10"
+              >
+                Criar conta
+              </UiButton>
+            </View>
 
-            <UiButton
-              variant="ghost"
-              onPress={() => router.push("/(auth)/signup")}
-              className="border-white/10"
-            >
-              Criar conta
-            </UiButton>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

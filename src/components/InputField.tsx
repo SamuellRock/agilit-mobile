@@ -10,7 +10,7 @@ type Props = TextInputProps & {
 };
 
 const baseInputClass =
-  "w-full rounded-xl border border-gray-200 bg-white/90 px-4 py-3 text-base text-gray-900";
+  "w-full rounded-xl border border-gray-200 bg-white/90 px-4 py-3 text-base text-gray-900 mb-4";
 
 export default function InputField({
   label,
