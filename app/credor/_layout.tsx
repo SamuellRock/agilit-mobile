@@ -1,6 +1,9 @@
 // app/credor/_layout.tsx
-import { Tabs } from "expo-router";
 import { Feather } from "@expo/vector-icons";
+import { Tabs } from "expo-router";
+import "../(stack)/create-offer";
+import "../(stack)/offer/[id]";
+import "../(stack)/start-loan";
 import "../../global.css";
 
 const tabBarOptions = {
@@ -12,7 +15,8 @@ const tabBarOptions = {
     borderTopWidth: 0,
     paddingTop: 10,
     paddingBottom: 14,
-    height: 70,
+    height: 90,
+    position: "absolute",
   },
   tabBarLabelStyle: { fontSize: 12, fontWeight: "600" },
 };
@@ -24,28 +28,36 @@ export default function CredorLayout() {
         name="index"
         options={{
           tabBarLabel: "Painel",
-          tabBarIcon: ({ color, size }) => <Feather name="activity" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="activity" color={color} size={size} />
+          ),
         }}
       />
       <Tabs.Screen
         name="offer"
         options={{
           tabBarLabel: "Ofertas",
-          tabBarIcon: ({ color, size }) => <Feather name="layers" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="layers" color={color} size={size} />
+          ),
         }}
       />
       <Tabs.Screen
         name="history"
         options={{
           tabBarLabel: "Histórico",
-          tabBarIcon: ({ color, size }) => <Feather name="clock" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="clock" color={color} size={size} />
+          ),
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
           tabBarLabel: "Perfil",
-          tabBarIcon: ({ color, size }) => <Feather name="user" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="user" color={color} size={size} />
+          ),
         }}
       />
     </Tabs>

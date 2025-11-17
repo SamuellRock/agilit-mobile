@@ -1,10 +1,10 @@
-import React from "react";
-import { ScrollView, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useLocalSearchParams, useRouter } from "expo-router";
 import UiButton from "@/components/UiButton";
 import { availableOffers, credorActiveLoans } from "@/data/mockData";
 import { formatCurrency, formatDate, formatPercentage } from "@/utils/format";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import React from "react";
+import { ScrollView, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function OfferDetails() {
   const params = useLocalSearchParams<{ id?: string }>();
@@ -12,17 +12,27 @@ export default function OfferDetails() {
   const offer = availableOffers.find((item) => item.id === params.id);
   const loan = credorActiveLoans.find((item) => item.id === params.id);
 
-  const title = offer ? `Oferta #${offer.id}` : loan ? `Contrato #${loan.id}` : "Detalhes";
+  const title = offer
+    ? `Oferta #${offer.id}`
+    : loan
+    ? `Contrato #${loan.id}`
+    : "Detalhes";
 
   return (
     <SafeAreaView className="flex-1 bg-dark-500">
       <ScrollView
         className="flex-1"
-        contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 32 }}
+        contentContainerStyle={{
+          paddingHorizontal: 16,
+          paddingTop: 16,
+          paddingBottom: 32,
+        }}
         contentInsetAdjustmentBehavior="automatic"
       >
         <View className="w-full max-w-2xl self-center">
-          <Text className="text-sm uppercase tracking-wide text-primary">Resumo</Text>
+          <Text className="text-sm uppercase tracking-wide text-primary">
+            Resumo
+          </Text>
           <Text className="text-3xl font-bold text-white">{title}</Text>
           <Text className="mt-2 text-base text-gray-300">
             Visualize os dados usados pelo Samuel na última negociação.
@@ -35,11 +45,17 @@ export default function OfferDetails() {
               <DetailRow label="Juros" value={formatPercentage(offer.rate)} />
               <DetailRow label="Início" value={formatDate(offer.startDate)} />
               <View>
-                <Text className="text-xs uppercase text-gray-400">Perfil indicado</Text>
+                <Text className="text-xs uppercase text-gray-400">
+                  Perfil indicado
+                </Text>
                 <Text className="text-base text-white">{offer.profile}</Text>
               </View>
               <Text className="text-sm text-gray-300">{offer.description}</Text>
-              <UiButton onPress={() => router.push(`/credor/start-loan?offer=${offer.id}`)}>
+              <UiButton
+                onPress={() =>
+                  router.push(`/credor/start-loan?offer=${offer.id}`)
+                }
+              >
                 Criar empréstimo
               </UiButton>
             </View>
@@ -60,9 +76,12 @@ export default function OfferDetails() {
 
           {!offer && !loan ? (
             <View className="mt-10 rounded-3xl border border-white/10 p-6 self-stretch">
-              <Text className="text-lg font-semibold text-white">Nada encontrado</Text>
+              <Text className="text-lg font-semibold text-white">
+                Nada encontrado
+              </Text>
               <Text className="mt-2 text-sm text-gray-300">
-                Não conseguimos encontrar a referência informada. Retorne e tente novamente.
+                Não conseguimos encontrar a referência informada. Retorne e
+                tente novamente.
               </Text>
               <UiButton className="mt-5" onPress={() => router.back()}>
                 Voltar
@@ -80,7 +99,9 @@ type DetailProps = { label: string; value: string };
 function DetailRow({ label, value }: DetailProps) {
   return (
     <View className="flex-row items-center justify-between border-b border-white/5 pb-2">
-      <Text className="text-sm uppercase tracking-wide text-gray-500">{label}</Text>
+      <Text className="text-sm uppercase tracking-wide text-gray-500">
+        {label}
+      </Text>
       <Text className="text-base font-semibold text-white">{value}</Text>
     </View>
   );
