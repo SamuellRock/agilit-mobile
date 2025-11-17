@@ -20,60 +20,67 @@ export default function CreateOffer() {
 
   return (
     <SafeAreaView className="flex-1 bg-dark-500">
-      <ScrollView className="flex-1 px-4 pt-4" contentInsetAdjustmentBehavior="automatic">
-        <Text className="text-sm uppercase tracking-wide text-primary">Nova oferta</Text>
-        <Text className="text-3xl font-bold text-white">Salvar rascunho</Text>
-        <Text className="mt-2 text-base text-gray-300">
-          Preencha o rascunho que será exibido instantaneamente para os usuários interessados.
-        </Text>
+      <ScrollView
+        className="flex-1"
+        contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 32 }}
+        contentInsetAdjustmentBehavior="automatic"
+        keyboardShouldPersistTaps="handled"
+      >
+        <View className="w-full max-w-xl self-center">
+          <Text className="text-sm uppercase tracking-wide text-primary">Nova oferta</Text>
+          <Text className="text-3xl font-bold text-white">Salvar rascunho</Text>
+          <Text className="mt-2 text-base text-gray-300">
+            Preencha o rascunho que será exibido instantaneamente para os usuários interessados.
+          </Text>
 
-        <View className="mt-8 space-y-5">
-          <InputField
-            label="Valor"
-            keyboardType="numeric"
-            value={amount}
-            onChangeText={setAmount}
-            placeholder="1500"
-          />
-          <InputField
-            label="Juros ao mês (%)"
-            keyboardType="numeric"
-            value={rate}
-            onChangeText={setRate}
-            placeholder="8"
-          />
-          <InputField
-            label="Parcelas"
-            keyboardType="numeric"
-            value={installments}
-            onChangeText={setInstallments}
-            placeholder="3"
-          />
-          <InputField
-            label="Perfil"
-            value={profile}
-            onChangeText={setProfile}
-            placeholder="Tipo de cliente ideal"
-            helperText="Exemplo: lojistas com faturamento recorrente."
-          />
-          <InputField
-            label="Descrição"
-            value={description}
-            onChangeText={setDescription}
-            placeholder="Explique os diferenciais"
-            multiline
-            numberOfLines={4}
-            inputClassName="min-h-[96px]"
-          />
-        </View>
+          <View className="mt-8 space-y-5">
+            <InputField
+              label="Valor"
+              keyboardType="numeric"
+              value={amount}
+              onChangeText={setAmount}
+              placeholder="1500"
+            />
+            <InputField
+              label="Juros ao mês (%)"
+              keyboardType="numeric"
+              value={rate}
+              onChangeText={setRate}
+              placeholder="8"
+            />
+            <InputField
+              label="Parcelas"
+              keyboardType="numeric"
+              value={installments}
+              onChangeText={setInstallments}
+              placeholder="3"
+            />
+            <InputField
+              label="Perfil"
+              value={profile}
+              onChangeText={setProfile}
+              placeholder="Tipo de cliente ideal"
+              helperText="Exemplo: lojistas com faturamento recorrente."
+            />
+            <InputField
+              label="Descrição"
+              value={description}
+              onChangeText={setDescription}
+              placeholder="Explique os diferenciais"
+              multiline
+              numberOfLines={4}
+              inputClassName="min-h-[120px]"
+            />
+          </View>
 
-        <View className="mt-8 flex-row gap-3 pb-10">
-          <UiButton variant="secondary" className="flex-1" onPress={() => router.back()}>
-            Cancelar
-          </UiButton>
-          <UiButton className="flex-1" onPress={handleSubmit}>
-            Publicar
-          </UiButton>
+          <View className="mt-8 gap-3 pb-6">
+            <UiButton variant="secondary" className="w-full" onPress={() => router.back()}>
+              Cancelar
+            </UiButton>
+            <UiButton className="w-full" onPress={handleSubmit}>
+              Publicar
+            </UiButton>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

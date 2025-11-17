@@ -12,7 +12,12 @@ export default function OfferScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-dark-500">
-      <ScrollView className="flex-1 px-4 pt-4" contentInsetAdjustmentBehavior="automatic">
+      <ScrollView
+        className="flex-1"
+        contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 32 }}
+        contentInsetAdjustmentBehavior="automatic"
+        keyboardShouldPersistTaps="handled"
+      >
         <View className="rounded-3xl bg-dark-300 p-5 shadow-soft">
           <Text className="text-sm uppercase tracking-wide text-gray-400">Playbook</Text>
           <Text className="text-3xl font-bold text-white">Minhas ofertas</Text>
@@ -25,7 +30,7 @@ export default function OfferScreen() {
           </UiButton>
         </View>
 
-        <View className="mt-8">
+        <View className="mt-8 gap-4">
           {availableOffers.map((offer) => (
             <OfferCard
               key={offer.id}

@@ -28,27 +28,34 @@ export default function StartLoan() {
 
   return (
     <SafeAreaView className="flex-1 bg-dark-500">
-      <ScrollView className="flex-1 px-4 pt-4" contentInsetAdjustmentBehavior="automatic">
-        <Text className="text-sm uppercase tracking-wide text-primary">Novo contrato</Text>
-        <Text className="text-3xl font-bold text-white">Gerar empréstimo</Text>
-        <Text className="mt-2 text-base text-gray-300">
-          Revise os dados abaixo antes de enviar para o Samuel.
-        </Text>
+      <ScrollView
+        className="flex-1"
+        contentContainerStyle={{ paddingHorizontal: 16, paddingTop: 16, paddingBottom: 32 }}
+        contentInsetAdjustmentBehavior="automatic"
+        keyboardShouldPersistTaps="handled"
+      >
+        <View className="w-full max-w-xl self-center">
+          <Text className="text-sm uppercase tracking-wide text-primary">Novo contrato</Text>
+          <Text className="text-3xl font-bold text-white">Gerar empréstimo</Text>
+          <Text className="mt-2 text-base text-gray-300">
+            Revise os dados abaixo antes de enviar para o Samuel.
+          </Text>
 
-        <View className="mt-8 space-y-5">
-          <InputField label="Tomador" value={borrower} onChangeText={setBorrower} placeholder="Nome completo" />
-          <InputField label="Valor" value={amount} onChangeText={setAmount} keyboardType="numeric" />
-          <InputField label="Juros ao mês (%)" value={rate} onChangeText={setRate} keyboardType="numeric" />
-          <InputField label="Parcelas" value={installments} onChangeText={setInstallments} keyboardType="numeric" />
-        </View>
+          <View className="mt-8 space-y-5">
+            <InputField label="Tomador" value={borrower} onChangeText={setBorrower} placeholder="Nome completo" />
+            <InputField label="Valor" value={amount} onChangeText={setAmount} keyboardType="numeric" />
+            <InputField label="Juros ao mês (%)" value={rate} onChangeText={setRate} keyboardType="numeric" />
+            <InputField label="Parcelas" value={installments} onChangeText={setInstallments} keyboardType="numeric" />
+          </View>
 
-        <View className="mt-8 flex-row gap-3 pb-10">
-          <UiButton variant="secondary" className="flex-1" onPress={() => router.back()}>
-            Voltar
-          </UiButton>
-          <UiButton className="flex-1" onPress={handleStart}>
-            Enviar contrato
-          </UiButton>
+          <View className="mt-8 gap-3 pb-6">
+            <UiButton variant="secondary" className="w-full" onPress={() => router.back()}>
+              Voltar
+            </UiButton>
+            <UiButton className="w-full" onPress={handleStart}>
+              Enviar contrato
+            </UiButton>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
